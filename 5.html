@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<head>
+<style>
+.hex {
+    float: left;
+    margin-left: 3px;
+    margin-bottom: -26px;
+}
+
+.hex {
+    opacity: 0.4;
+}
+
+.hex.unreachable {
+    opacity: 0;
+}
+
+.hex:hover {
+    opacity: 0.9;
+}
+
+.hex .top {
+    width: 0;
+    border-bottom: 30px solid #999;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+}
+
+.hex .middle {
+    width: 104px;
+    height: 60px;
+    background: #999;
+}
+
+.hex .bottom {
+    width: 0;
+    border-top: 30px solid #999;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+}
+
+.hex-row {
+    clear: left;
+}
+
+.hex-row.even {
+    margin-left: 53px;
+}
+
+.hex:hover .middle {
+	background: #51B3F5; 
+}
+
+.hex:hover .top {
+    border-bottom: 30px solid #51B3F5;
+}
+
+.hex:hover .bottom {
+    border-top: 30px solid #51B3F5;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js" type="text/javascript"></script> 
+<script>
+$(function(){
+var mapData=new Array([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1],
+					   [1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+					   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
+for(i in mapData){
+	var row=$('<div class="hex-row"></div>');
+	$('#container').append(row);
+	if(i%2==1)
+		row.addClass('even');
+	for(j in mapData[i]) {
+		var hex=$('<div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>');
+		if(mapData[i][j]==0)
+			hex.addClass('unreachable');
+		row.append(hex);
+	}
+}
+});
+</script>
+</head>
+<body>
+<img src="map.jpg">
+<div id="container" style="float: left; position: absolute;top: 20px;">
+    <!--div class="hex-row">
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+    </div>
+    <div class="hex-row even">
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+    </div>
+    <div class="hex-row">
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+    </div>
+    <div class="hex-row even">
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+    </div>
+    <div class="hex-row">
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+    </div>
+    <div class="hex-row even">
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+    </div>
+    <div class="hex-row">
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+        <div class="hex"><div class="top"></div><div class="middle"></div><div class="bottom"></div></div>
+    </div-->
+</div>
+</body>
